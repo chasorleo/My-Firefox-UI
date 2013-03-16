@@ -1,0 +1,36 @@
+/*This is my Firefox UI and I think it's kind of what I want-Maxize the useful space of screen
+It has features list below:
+1.No Menu bars
+2.No tool bars
+3.No Search bars
+4.No Close tab button
+Problem need to be fixed:
+I used the vimperator plugin and use :set gui=addons,tabs, 
+but there still a < > and + sign the the title bar of windows.
+I do not know the selector name of these elements.The code blow does not work will
+tabs-newtab-button
+{
+display:none important;
+}
+*/
+.tabs-alltabs-button {display:none !important;}
+.tabbrowser-tab[selected="true"]{
+min-width: 180px !important;
+max-width: 180px !improtant;
+}
+.tabbrowser-tabs [selected="true"]:hover .tab-text {
+font-weight:bold !important;
+}
+.tabbrower-tabs tab:not([selected="true"]) .tab-text {
+disply:none !important;
+}
+.tabbrower-tabs tab:not([selected="true"]) {
+min-width: 28px !important;
+max-width: 28px !important;
+}
+.tabs-container .tabs-alltabs-stack,
+.tabs-container .tabs-closebutton,
+.tabs-container .tabs-newtab-button,
+{
+display: none !important;
+}
