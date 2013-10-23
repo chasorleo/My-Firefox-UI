@@ -1,36 +1,284 @@
-/*This is my Firefox UI and I think it's kind of what I want-Maxize the useful space of screen
-It has features list below:
-1.No Menu bars
-2.No tool bars
-3.No Search bars
-4.No Close tab button
-Problem need to be fixed:
-I used the vimperator plugin and use :set gui=addons,tabs, 
-but there still a < > and + sign the the title bar of windows.
-I do not know the selector name of these elements.The code blow does not work will
-tabs-newtab-button
-{
-display:none important;
-}
-*/
-.tabs-alltabs-button {display:none !important;}
-.tabbrowser-tab[selected="true"]{
-min-width: 180px !important;
-max-width: 180px !improtant;
-}
-.tabbrowser-tabs [selected="true"]:hover .tab-text {
-font-weight:bold !important;
-}
-.tabbrower-tabs tab:not([selected="true"]) .tab-text {
-disply:none !important;
-}
-.tabbrower-tabs tab:not([selected="true"]) {
-min-width: 28px !important;
-max-width: 28px !important;
-}
-.tabs-container .tabs-alltabs-stack,
-.tabs-container .tabs-closebutton,
-.tabs-container .tabs-newtab-button,
-{
-display: none !important;
-}
+/* Do not remove the @namespace line -- it's required for correct functioning
+     */
+    @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+    /* ============================================================
+     * UI Appearance Tweaks
+     * ============================================================ */
+
+    /* Change the fonts on UI components. */
+    menubar, menubutton, menulist, menu, menuitem, textbox, toolbar, tab,
+    tree, tooltip
+    {
+        font-family: verdana, helvetica !important;
+        font-size: 12px !important;
+    }
+
+    /* URL bar background image for high security site */
+    #urlbar[level="high"] > .autocomplete-textbox-container {
+        background-image: url('high.png') !important;
+        font-weight: 600 !important;
+    }
+
+    /* URL bar background image for low security site */
+    #urlbar[level="low"] > .autocomplete-textbox-container {
+        background-image: url('low.png') !important;
+        font-weight: 600 !important;
+    }
+
+    /* URL bar background image for broken secure site */
+    #urlbar[level="broken"] > .autocomplete-textbox-container {
+        background-image: url('broken.png') !important;
+        font-weight: 600 !important;
+    }
+
+    /* Hide bookmark icons in the Personal Toolbar */
+    toolbarbutton.bookmark-item > .toolbarbutton-icon {
+        display: none;
+    }
+
+    /* Hide dropdown arrows in Back & Forward buttons */
+    #back-button .toolbarbutton-menubutton-dropmarker,
+    #forward-button .toolbarbutton-menubutton-dropmarker
+    { display: none !important; }
+
+    /* hide the Go Button */
+    #go-button-stack {
+      display: none !important;
+    }
+
+    /* hide the Go Button */
+    .search-go-button-stack {
+      display: none !important;
+    }
+
+    /* to make Options dialog fit contents */
+    #BrowserPreferences {
+      width: 50em !important;
+      height: 45em !important;
+    }
+
+    /* =============================================================
+     * Icon replacements
+     * ============================================================= */
+
+     /* Icon for Tiny Menu */
+    menu#tinymenu {
+       background: 50% 50% no-repeat
+          url('TinyMenu.png') !important;
+    }
+    menu#tinymenu > label {
+       visibility: hidden;
+    }
+
+    #sage-button {
+      list-style-image: url("rss.png") !important;
+    }
+
+    /*#downloads-button {
+      list-style-image: url("download.png") !important;
+       -moz-image-region: rect(0 18px 18px 0)!important;
+    }
+
+    /*#bookmarks-button {
+      list-style-image: url("bookmarks.png") !important;
+       -moz-image-region: rect(0 18px 18px 0)!important;
+    }
+
+    #history-button {
+      list-style-image: url("history.png") !important;
+       -moz-image-region: rect(0 18px 18px 0)!important;
+    }*/
+
+    #simpleClearButton {
+      list-style-image: url("trash.png") !important;
+       -moz-image-region: rect(0 18px 18px 0)!important;
+    }
+
+    #scrapbook-button {
+      list-style-image: url("amazing.png") !important;
+       -moz-image-region: rect(0 18px 18px 0)!important;
+    }
+
+    #console2-button {
+      list-style-image: url("console.png") !important;
+       -moz-image-region: rect(0 18px 18px 0)!important;
+    }
+
+    #reload-button {
+      list-style-image: url("reload.png") !important;
+       -moz-image-region: rect(3px 3px 3px 3px)!important;
+    }
+
+    /* =============================================================
+     * Bookmark Hacks
+     * =============================================================*/
+
+    /* change space around bookmark toolbar icons */
+    #personal-bookmarks toolbarbutton {
+      margin: 0px 8px 0px 8px !important;
+      padding: 0px 0px 0px 0px !important;
+    }*/
+
+    /* =============================================================
+     * Sidebar Hacks
+     * ============================================================== */
+
+    /* Hide sidebar scrollbar */
+    #bookmarks-view, scrollbar[orient=vertical] {
+      width: 0px !important;
+    }
+
+    sidebarheader {
+      height: 25px !important;
+    }
+
+    #sidebar-box .tabs-closebutton {
+      margin-bottom: 0px !important;
+      padding: 0px 9px 0px 2px !important;
+    }
+
+
+    /* Allow sidebar to be closed completely using the slider */
+    #sidebar-box {
+        overflow-x: hidden !important;
+    }
+    #sidebar {
+        min-width: 0px !important;
+        max-width: none !important;
+        overflow-x: hidden !important;
+    }
+    /* Allow sidebar to be opened completely using the slider */
+    #appcontent {
+        overflow-x: hidden !important;
+    }
+
+    /* ==============================================================
+     * UI size reduction customisations
+     * ============================================================== */
+
+    #toolbar-menubar, #nav-bar, #PersonalToolbar {
+    -moz-appearance: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    }
+
+    .tabbrowser-strip {
+    margin-bottom: -2.5px !important;
+    }
+
+    /* ===============================================================
+     * Tab Edits
+     * =============================================================== */
+    /* Remove Close Button in Tabbar */
+    .tabbrowser-tabs .tab-close-button { display:none !important; }
+
+    /* ********************************************************** */
+    /* Here is my work !!!!!!!!!!!!!!!! */
+    .tabs-alltabs-button { display:none !important; }
+    .tabbrowser-tab[selected="true"] {
+    min-width: 200px !important;
+    max-width: 200px !important;
+    }
+       
+    .tabbrowser-tabs tab:not([selected="true"]) .tab-text {
+    display:none  !important;
+    }
+    .tabbrowser-tabs tab:not([selected="true"]) {
+    min-width: 30px !important;
+    max-width: 30px !important;
+    }
+
+    .tabs-container .tabs-alltabs-stack,
+    .tabs-container .tabs-closebutton,
+    .tabs-container .tabs-newtab-button
+    {
+    display: none !important;
+    }
+    #context-back, #context-forward, #context-stop, #context-reload, #context-sendlink  {display:none !important;}    
+    /* Hide dropdown arrows in Back & Forward buttons */
+    #back-button .toolbarbutton-menubutton-dropmarker,
+    #forward-button .toolbarbutton-menubutton-dropmarker
+    { display: none !important; }
+        
+    /* ********************************************************** */
+
+    .tabbrowser-tab[selected="false"] .tab-text,
+    .tabbrowser-tab[selected="false"]:hover .tab-text,
+    .tabbrowser-tab[selected="false"]:hover .tab-text {
+    display: block !important;
+    }
+    /* tabbrowser-tab focus ring*/
+    .tabbrowser-tab >  .tab-image-middle > .tab-text {
+      border: none !important;
+    }
+
+    /* Remove List Tabs button */
+    .tabs-alltabs-stack {
+    display: none !important;
+    }
+
+    .tabbrowser-tabs {
+        background-color: transparent !important;
+        background-image: none !important;
+    }
+
+    /* selected tab */
+    .tabbrowser-tab[selected="true"] > .tab-image-left,
+    .tabbrowser-tab[selected="true"] > .tab-image-right,
+    .tabbrowser-tab[selected="true"] > .tab-image-middle,
+    .tabbrowser-tab[selected="true"] > .tab-close-button {
+      background-color: #BAC7B1 !important;
+    }
+
+    /* selected tab hover*/
+    .tabbrowser-tab[selected="true"]:hover > .tab-image-left,
+    .tabbrowser-tab[selected="true"]:hover > .tab-image-right,
+    .tabbrowser-tab[selected="true"]:hover > .tab-image-middle,
+    .tabbrowser-tab[selected="true"]:hover > .tab-close-button {
+      background-color: #000000 !important;
+    }
+
+    .tabbrowser-tab:not([selected="true"]):hover > .tab-image-left,
+    .tabbrowser-tab:not([selected="true"]):hover > .tab-image-right,
+    .tabbrowser-tab:not([selected="true"]):hover > .tab-image-middle,
+    .tabbrowser-tab:not([selected="true"]):hover > .tab-close-button {
+      background-color: #F9E917 !important;
+    }
+
+    .tabbrowser-tab[busy] > .tab-image-left,
+    .tabbrowser-tab[busy] > .tab-image-right,
+    .tabbrowser-tab[busy] > .tab-image-middle,
+    .tabbrowser-tab[busy] > .tab-close-button {
+      background-color: #00A000 !important
+    }
+
+    /* Selected tab text */
+    .tabbrowser-tab > .tab-image-middle > .tab-text {
+      color: #ffffff !important;
+    }
+
+    /* Unselected & hovered tab text */
+    .tabbrowser-tab[selected="true"] > .tab-image-middle > .tab-text,
+    .tabbrowser-tab:not ([selected="true"]):hover > .tab-image-middle > .tab-text {
+      color: #000000 !important;
+    }
+
+
+    /* Remove the white space at tab bar ends */
+    .tabs-left,
+    .tabs-right {
+      width: 2px !important;
+    }
+
+    /* hide tab throbbers */
+    .tab[busy] .tab-icon {
+      visibility: hidden !important;
+    }
+
+    /* hide the tab favicon on non-selected tabs */
+    .tab:not ([selected="true"]) .tab-icon {
+      display: none !important;
+    }
+
+
