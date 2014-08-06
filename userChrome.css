@@ -1,10 +1,10 @@
 /* Do not remove the @namespace line -- it's required for correct functioning
-     */
+*/
     @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
 
     /* ============================================================
-     * UI Appearance Tweaks
-     * ============================================================ */
+* UI Appearance Tweaks
+* ============================================================ */
 
     /* Change the fonts on UI components. */
     menubar, menubutton, menulist, menu, menuitem, textbox, toolbar, tab,
@@ -59,8 +59,8 @@
     }
 
     /* =============================================================
-     * Icon replacements
-     * ============================================================= */
+* Icon replacements
+* ============================================================= */
 
      /* Icon for Tiny Menu */
     menu#tinymenu {
@@ -76,19 +76,19 @@
     }
 
     /*#downloads-button {
-      list-style-image: url("download.png") !important;
-       -moz-image-region: rect(0 18px 18px 0)!important;
-    }
+list-style-image: url("download.png") !important;
+-moz-image-region: rect(0 18px 18px 0)!important;
+}
 
-    /*#bookmarks-button {
-      list-style-image: url("bookmarks.png") !important;
-       -moz-image-region: rect(0 18px 18px 0)!important;
-    }
+/*#bookmarks-button {
+list-style-image: url("bookmarks.png") !important;
+-moz-image-region: rect(0 18px 18px 0)!important;
+}
 
-    #history-button {
-      list-style-image: url("history.png") !important;
-       -moz-image-region: rect(0 18px 18px 0)!important;
-    }*/
+#history-button {
+list-style-image: url("history.png") !important;
+-moz-image-region: rect(0 18px 18px 0)!important;
+}*/
 
     #simpleClearButton {
       list-style-image: url("trash.png") !important;
@@ -111,8 +111,8 @@
     }
 
     /* =============================================================
-     * Bookmark Hacks
-     * =============================================================*/
+* Bookmark Hacks
+* =============================================================*/
 
     /* change space around bookmark toolbar icons */
     #personal-bookmarks toolbarbutton {
@@ -121,8 +121,8 @@
     }*/
 
     /* =============================================================
-     * Sidebar Hacks
-     * ============================================================== */
+* Sidebar Hacks
+* ============================================================== */
 
     /* Hide sidebar scrollbar */
     #bookmarks-view, scrollbar[orient=vertical] {
@@ -153,9 +153,20 @@
         overflow-x: hidden !important;
     }
 
+     /* Hide nav-bar */
+    #main-window #nav-bar {display: none !important;
+    }
+    #urlbar {display: none !important;
+    }
+    #searchbar {display: none !important;
+    }
+
+    .tabs-newtab-button {display: none !important;
+    }
+
     /* ==============================================================
-     * UI size reduction customisations
-     * ============================================================== */
+* UI size reduction customisations
+* ============================================================== */
 
     #toolbar-menubar, #nav-bar, #PersonalToolbar {
     -moz-appearance: none !important;
@@ -168,8 +179,8 @@
     }
 
     /* ===============================================================
-     * Tab Edits
-     * =============================================================== */
+* Tab Edits
+* =============================================================== */
     /* Remove Close Button in Tabbar */
     .tabbrowser-tabs .tab-close-button { display:none !important; }
 
@@ -182,7 +193,7 @@
     }
        
     .tabbrowser-tabs tab:not([selected="true"]) .tab-text {
-    display:none  !important;
+    display:none !important;
     }
     .tabbrowser-tabs tab:not([selected="true"]) {
     min-width: 30px !important;
@@ -195,7 +206,7 @@
     {
     display: none !important;
     }
-    #context-back, #context-forward, #context-stop, #context-reload, #context-sendlink  {display:none !important;}    
+    #context-back, #context-forward, #context-stop, #context-reload, #context-sendlink {display:none !important;}
     /* Hide dropdown arrows in Back & Forward buttons */
     #back-button .toolbarbutton-menubutton-dropmarker,
     #forward-button .toolbarbutton-menubutton-dropmarker
@@ -209,7 +220,7 @@
     display: block !important;
     }
     /* tabbrowser-tab focus ring*/
-    .tabbrowser-tab >  .tab-image-middle > .tab-text {
+    .tabbrowser-tab > .tab-image-middle > .tab-text {
       border: none !important;
     }
 
@@ -281,4 +292,6 @@
       display: none !important;
     }
 
-
+    .nav-bar {
+        autohide = true;
+    }
